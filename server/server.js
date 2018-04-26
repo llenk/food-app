@@ -43,6 +43,7 @@ app.post('/food-array', function (req, res) {
         res.sendStatus(200);
     }).catch((error) => {
         res.sendStatus(500);
+        console.log(error);
     });
 });
 

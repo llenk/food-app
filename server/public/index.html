@@ -15,9 +15,9 @@
     <h1>eyy</h1>
     <div ng-controller="FoodController as vm">
         <form ng-submit="vm.createFood()">
-            <input type="text" ng-model="vm.newFood.foodName" />
-            <input type="number" ng-model="vm.newFood.foodDeliciousness" />
-            <input type="boolean" ng-model="vm.newFood.foodIsHot" />
+            <input type="text" ng-model="vm.newFood.name" />
+            <input type="number" ng-model="vm.newFood.deliciousness_rating" />
+            <input type="boolean" ng-model="vm.newFood.is_hot" />
             <button>Submit</button>
         </form>
         {{vm.foodArray}}
