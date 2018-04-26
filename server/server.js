@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 
 const Food = require('./models/food.schema');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(express.static('server/public'));
 
@@ -30,13 +30,20 @@ let foodArray = [
 ];
 
 app.get('/food', function (req, res) {
-    console.log('eyy');
     Food.find({})
         .then((data) => {
             res.send(data);
         }).catch((error) => {
             res.send(500);
         });
+});
+app.post('/food-array', function (req, res) {
+    Food.create(req.body)
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
 });
 
 app.listen(PORT, function () {
