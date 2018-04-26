@@ -16,11 +16,18 @@
     <div ng-controller="FoodController as vm">
         <form ng-submit="vm.createFood()">
             <input type="text" ng-model="vm.newFood.name" />
-            <input type="number" ng-model="vm.newFood.deliciousness_rating" />
-            <input type="boolean" ng-model="vm.newFood.is_hot" />
+            <label for="1" class="pull-left">1</label>
+            <input type="range" min="1" max="10" step="1" ng-model="vm.newFood.deliciousness_rating" />
+            <label for="10" class="pull-right">10</label>
+            <input type="radio" name="status" ng-model="vm.newFood.is_hot" ng-value="true"/> Hot
+            <input type="radio" name="status" ng-model="vm.newFood.is_hot" ng-value="false"/>  Not
             <button>Submit</button>
         </form>
-        {{vm.foodArray}}
+        <ul>
+            <li ng-repeat="item in vm.foodArray">
+                {{item.name}} is {{item.deliciousness_rating}}/10 delicious and is {{item.is_hot}}-ly hot 
+            </li>
+        </ul>
 
     </div>
 </body>

@@ -21,14 +21,6 @@ mongoose.connection.on('error', (error) => {
 });
 //CONNECTING TO MONGO END
 
-let foodArray = [
-    {
-        name: 'Noodles',
-        deliciousness_rating: 4,
-        is_hot: false
-    }
-];
-
 app.get('/food', function (req, res) {
     Food.find({})
         .then((data) => {

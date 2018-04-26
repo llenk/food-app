@@ -5,9 +5,7 @@ app.controller('FoodController', ['$http', function ($http) {
 
     var self = this;
 
-    self.newFood = {
-
-    };
+    self.newFood = {};
 
     self.displayArray = function() {
         $http({
