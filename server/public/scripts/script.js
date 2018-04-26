@@ -9,7 +9,7 @@ app.controller('FoodController', function($http) {
         method: 'GET',
         url: '/food'
     }).then(function successCallback(response) {
-        console.log(response.data);
+        self.foodArray = response.data;
     }, function errorCallback(response) {
         self.foodArray = response.statusText;
     });
