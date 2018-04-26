@@ -21,8 +21,8 @@ app.controller('FoodController', ['$http', function ($http) {
     self.createFood = function () {
         $http({
             method: 'POST',
-            url: '/food-array',
-            data: self.newFood
+            url: '/food',
+            data: newFood
         }).then(function successCallback(response) {
             console.log(response.status);
             self.displayArray();
@@ -30,7 +30,33 @@ app.controller('FoodController', ['$http', function ($http) {
             console.log(error);
         })
     };
-    
+
+    self.deleteFood = function(food) {
+        $http({
+            method: 'DELETE',
+            url: '/food',
+            params: food
+        }).then(function(response) {
+            console.log(response.status);
+            self.displayArray();
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+
+    self.saveFood = function(food) {
+        $http({
+            method: 'PUT',
+            url: '/food',
+            data: food
+        }).then(function (response) {
+            console.log(response.status);
+            self.displayArray();
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
     self.displayArray();
 }]);
 

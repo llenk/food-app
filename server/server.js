@@ -29,8 +29,28 @@ app.get('/food', function (req, res) {
             res.send(500);
         });
 });
-app.post('/food-array', function (req, res) {
+app.post('/food', function (req, res) {
     Food.create(req.body)
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    });
+});
+
+app.delete('/food', function (req, res) {
+    Food.findByIdAndRemove(req.query._id)
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    });
+});
+
+app.put('/food', function (req, res) {
+    Food.findByIdAndUpdate(req.body._id, req.body)
     .then(() => {
         res.sendStatus(200);
     }).catch((error) => {

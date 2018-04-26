@@ -19,16 +19,36 @@
             <label for="1" class="pull-left">1</label>
             <input type="range" min="1" max="10" step="1" ng-model="vm.newFood.deliciousness_rating" />
             <label for="10" class="pull-right">10</label>
-            <input type="radio" name="status" ng-model="vm.newFood.is_hot" ng-value="true"/> Hot
-            <input type="radio" name="status" ng-model="vm.newFood.is_hot" ng-value="false"/>  Not
+            <input type="radio" name="status" ng-model="vm.newFood.is_hot" ng-value="true" /> Hot
+            <input type="radio" name="status" ng-model="vm.newFood.is_hot" ng-value="false" /> Not
             <button>Submit</button>
         </form>
-        <ul>
-            <li ng-repeat="item in vm.foodArray">
-                {{item.name}} is {{item.deliciousness_rating}}/10 delicious and is {{item.is_hot}}-ly hot 
-            </li>
-        </ul>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Deliciousness Rating</th>
+                    <th>Delete</th>
+                    <th>Save</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="food in vm.foodArray">
+                    <td>
+                        <input ng-model="food.name">
+                    </td>
+                    <td>
+                        <input ng-model="food.deliciousness_rating">
+                    </td>
+                    <td>
+                        <button ng-click="vm.deleteFood(food)">Delete</button>
+                    </td>
+                    <td>
+                        <button ng-click="vm.saveFood(food)">Save</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 
